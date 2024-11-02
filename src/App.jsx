@@ -18,14 +18,17 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<NotFound />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<TaskList />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/addtask" element={<AddTask />} />
-        <Route path="/tasklist" element={<TaskList />} />
+        <Route path="/tasks" element={<TaskList />}>
+          <Route index element={<TaskList />} />
+          <Route path=":id" element={<TaskDetail />} />
+        </Route>
         <Route path="/edittask" element={<EditTask />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/settings" element={<Settings />} />
-        <Route path="/tasklist/:id" element={<TaskDetail />} />
       </Routes>
     </BrowserRouter>
   );
